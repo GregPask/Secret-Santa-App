@@ -1,0 +1,59 @@
+.userPage {
+    h2 {
+        font-size: 4rem;
+        text-align: center;
+        margin-top: 1em;
+    }
+
+    p {
+        text-align: center;
+        margin-bottom: 2.4em;
+        font-size: 1.5rem;
+    }
+
+    padding: 1em;
+}
+
+
+#grid1 {
+    display: grid;
+    grid-template-columns: 5fr 3fr 1fr;
+    // border: 5px solid red;
+}
+
+
+.del {
+    cursor: pointer;
+    color: rgb(161, 12, 12);
+    font-size: 30px;
+}
+
+
+@media(max-width: 912px){
+    #grid1 {
+        grid-template-columns: 1fr;
+    }
+
+    #middle {
+        margin-bottom: 5em;
+    }
+}
+
+
+#finalSubmit {
+    cursor: pointer;
+}
+
+#userButtons {
+    outline: 0;
+    color: rgb(16, 84, 172);
+    cursor: pointer;
+    border: 0;
+    padding: 5px;
+    text-decoration: underline;
+    background-color: rgba(28, 99, 146, 0);
+}
+
+#userButtons:hover {
+  color: rgb(49, 117, 206);
+}

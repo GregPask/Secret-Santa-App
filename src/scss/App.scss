@@ -1,0 +1,55 @@
+@import "./Home.scss";
+@import "./Register.scss";
+@import "./User.scss";
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#navbar {
+    background-color: rgb(175, 10, 10)  !important;
+    color: #fff;
+    position: relative;
+    height: auto;
+
+   
+    
+
+
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        display: inline-block;
+        margin-right: 45px;
+    }
+
+     a{
+        font-size: 2rem;
+        cursor: pointer;
+     }
+}
+
+
+#navbar-right {
+    position: absolute;
+    right: 20px;
+    top: 40px;
+}
+
+#navbar-left {
+    position: absolute;
+    left: 25px;
+    top: 40px;
+}
+
+
+
+@media (max-width: 768px){
+    #navbar-right {
+        display: none;
+    }
+}
