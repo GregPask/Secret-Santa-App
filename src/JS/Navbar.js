@@ -1,10 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import "../scss/App.scss";
 
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../Actions/authActions";
+import { withStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+const styles = {
+    grow: {
+      flexGrow: 1
+    }
+};
 
 class Navbar extends Component {
     state = {}
@@ -15,35 +26,30 @@ class Navbar extends Component {
     }
 
     render() {
-        console.log(this.props);
-        return (
-            <nav id="navbar" class="navbar navbar-expand-sm navbar-dark bg-dark">
-                <Link to="/" class="navbar-brand" href="#">Pasky's </Link>
-                <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="collapsibleNavId">
-                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                        {!this.props.authProp.authenticated ? (
-                            <div>
-                                <li class="nav-item active">
-                                    <Link to="/login" class="nav-link" href="#">Login </Link>
-                                </li>
-                                <li class="nav-item">
-                                    <Link to="/register" class="nav-link" href="#">Register</Link>
-                                </li>
-                            </div>
-                        ) :
+        const { classes } = this.props;
 
-                            <div>
-                                <li class="nav-item">
-                                    <Link to="/" onClick={this.logoutUser} class="nav-link" href="#">Logout</Link>
-                                </li>
-                            </div>
-                        }
-                    </ul>
-                </div>
-            </nav>
+        return (
+            <Fragment>
+                <AppBar position="static" color="default">
+                    <Toolbar>
+                    <Typography variant="body1" className={classes.grow}>Secret Santa</Typography>
+                    {
+                        !this.props.authProp.authenticated ? 
+                        (
+                            <Fragment>
+                                <Button component={Link} to="/login">Login</Button>
+                                <Button component={Link} to="/register">Register</Button>
+                            </Fragment>
+                        ) :
+                        (
+                            <Fragment>
+                                <Button component={Link} to="/" onClick={this.logoutUser}>Logout</Button>
+                            </Fragment>
+                        )
+                    }     
+                    </Toolbar>
+                </AppBar>
+            </Fragment>
         );
     }
 }
@@ -54,4 +60,4 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps, { logoutUser })(Navbar);
+export default withStyles(styles)(connect(mapStateToProps, { logoutUser })(Navbar));
