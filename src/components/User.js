@@ -6,21 +6,22 @@ import { logoutUser } from "../Actions/authActions";
 import { connect } from "react-redux";
 
 class User extends Component {
-    state = {
-        token: localStorage.getItem("token"),
-        userName: "",
-        usersAdded: [
 
-        ],
-        usersLeft: 3,
-        name: "",
-        email: "",
-        errors: {
+    constructor(props) {
+        super(props);
 
-        },
-        logout: false,
-        dashboard: false,
-        backendErrors: []
+        this.state = {
+            token: localStorage.getItem("token"),
+            userName: "",
+            usersAdded: [],
+            usersLeft: 3,
+            name: "",
+            email: "",
+            errors: {},
+            logout: false,
+            dashboard: false,
+            backendErrors: []
+        };
     }
 
     logout = () => {

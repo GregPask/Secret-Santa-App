@@ -3,7 +3,6 @@ body {
     background-color: #f0ebeb;
 }
 
-
 #container {
     max-width: 900px;
     margin: auto;
@@ -13,7 +12,6 @@ body {
     width: 100px;
     height: 100px;
 }
-
 
 #title {
     background-image: url("https://london-post.co.uk/wp-content/uploads/2018/11/xmas-presents.jpg");
@@ -25,14 +23,12 @@ body {
     position: relative;
     justify-content: center;
   
-
     h1 {
         font-size: 5rem;
         color: #fff;
         z-index: 55500;
     }
 }
-
 
 #overlay {
      background-color: rgba(0, 0, 0, 0.664);
@@ -42,9 +38,8 @@ body {
     right: 0;
     left: 0;
     z-index: 0;
-    
+ 
 }
-
 
 #signUp {
     background-color: black;
@@ -60,7 +55,6 @@ body {
 #hello {
     color: #fff;
 }
-
 
 #jumbo {
     text-align: center;
@@ -82,7 +76,6 @@ body {
     }
 
 }
-
 
 #jumboBtn {
    

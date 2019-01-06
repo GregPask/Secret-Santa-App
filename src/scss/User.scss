@@ -10,10 +10,9 @@
         margin-bottom: 2.4em;
         font-size: 1.5rem;
     }
-
+    
     padding: 1em;
 }
-
 
 #grid1 {
     display: grid;
@@ -21,13 +20,11 @@
     // border: 5px solid red;
 }
 
-
 .del {
     cursor: pointer;
     color: rgb(161, 12, 12);
     font-size: 30px;
 }
-
 
 @media(max-width: 912px){
     #grid1 {
@@ -38,7 +35,6 @@
         margin-bottom: 5em;
     }
 }
-
 
 #finalSubmit {
     cursor: pointer;

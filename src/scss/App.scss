@@ -13,10 +13,6 @@ body {
     position: relative;
     height: auto;
 
-   
-    
-
-
     ul {
         margin: 0;
         padding: 0;
@@ -33,7 +29,6 @@ body {
      }
 }
 
-
 #navbar-right {
     position: absolute;
     right: 20px;
@@ -45,8 +40,6 @@ body {
     left: 25px;
     top: 40px;
 }
-
-
 
 @media (max-width: 768px){
     #navbar-right {

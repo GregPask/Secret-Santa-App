@@ -26,14 +26,19 @@ const styles = theme => ({
   });
 
 class Register extends Component {
-    state = {
-        username: null,
-        usernameError: null,
-        email: null,
-        password: null,
-        registered: false,
-        error: null,
-        open: false
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            username: null,
+            usernameError: null,
+            email: null,
+            password: null,
+            registered: false,
+            error: null,
+            open: false
+        };
     }
 
     handleUsernameChanged = (e) => {

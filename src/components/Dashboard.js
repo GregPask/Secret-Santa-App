@@ -3,11 +3,17 @@ import React, { Component } from 'react';
 import config from '../config';
 
 class Dashboard extends Component {
-    state = {
-        token: localStorage.getItem("token"),
-        userName: null,
-        participants: []
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            token: localStorage.getItem("token"),
+            userName: null,
+            participants: []
+        };
     }
+
 
     componentDidMount() {
 
