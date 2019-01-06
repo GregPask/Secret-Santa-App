@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
+
 import "../scss/App.scss";
-import { Route, Link, Switch, Redirect } from "react-router-dom";
-import axios from "axios";
+
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../Actions/authActions";
-
-
 
 class Navbar extends Component {
     state = {}
@@ -41,8 +40,6 @@ class Navbar extends Component {
                                     <Link to="/" onClick={this.logoutUser} class="nav-link" href="#">Logout</Link>
                                 </li>
                             </div>
-
-
                         }
                     </ul>
                 </div>
@@ -50,7 +47,6 @@ class Navbar extends Component {
         );
     }
 }
-
 
 const mapStateToProps = (state) => {
     return {

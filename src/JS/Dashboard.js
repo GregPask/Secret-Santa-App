@@ -9,7 +9,6 @@ class Dashboard extends Component {
 
     componentDidMount() {
 
-
         fetch("http://localhost:8080/api/santa", {
             method: "GET",
             headers: {
@@ -17,8 +16,6 @@ class Dashboard extends Component {
                 "Authorization": "Bearer " + this.state.token
             }
         })
-
-
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
@@ -27,9 +24,7 @@ class Dashboard extends Component {
                     participants: data.participants
                 })
             });
-
     }
-
 
     render() {
 
@@ -46,7 +41,6 @@ class Dashboard extends Component {
         return (
             <div>
                 <h2>Dashboard</h2>
-
                 <br /><br /><br />
                 <table style={{ maxWidth: "500px" }} className="table table-bordered table-striped">
                     <thead>
@@ -57,13 +51,9 @@ class Dashboard extends Component {
                         </tr>
                     </thead>
                     <tbody>
-
                         {users}
-
                     </tbody>
-
                 </table>
-
             </div>
         );
     }

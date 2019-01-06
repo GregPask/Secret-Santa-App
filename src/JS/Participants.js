@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 class Participants extends Component {
     state = {}
     render() {

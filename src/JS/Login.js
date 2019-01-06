@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
-import classnames from "classnames";
 
 import { connect } from "react-redux";
 import { loginUser } from "../Actions/authActions";
@@ -13,15 +12,12 @@ class Login extends Component {
         loggedIn: false,
         errors: ""
     }
+
     changeHandler = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
     }
-
-
-
-
 
     submitForm = (e) => {
         e.preventDefault();
@@ -96,7 +92,6 @@ class Login extends Component {
         );
     }
 }
-
 
 const mapStateToProps = (state) => {
     return {
