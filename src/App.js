@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 
 import "./scss/App.scss";
 
-import { Route, Link, Switch, Redirect } from "react-router-dom";
-
+import { Route, Switch } from "react-router-dom";
 
 import Register from "./JS/Register";
 import Login from "./JS/Login";
@@ -11,10 +10,6 @@ import Navbar from "./JS/Navbar";
 import User from "./JS/User";
 import Home from "./JS/Home";
 import Dashboard from "./JS/Dashboard";
-
-
-
-
 
 class App extends Component {
   render() {

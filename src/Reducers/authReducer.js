@@ -1,8 +1,6 @@
 const initialState = {
-
     authenticated: false,
     one: "one"
-
 }
 
 export default function (state = initialState, action) {
@@ -29,5 +27,3 @@ export default function (state = initialState, action) {
             return state
     }
 }
-
-
