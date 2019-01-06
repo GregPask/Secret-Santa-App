@@ -40,7 +40,7 @@ class Register extends Component {
         let name = e.target.value;
 
         if (name.length > 0) {
-            
+
             fetch(config.AVAILABLE + "/" + name, {
                 method: "GET"
             })
