@@ -4,12 +4,12 @@ import "./scss/App.scss";
 
 import { Route, Switch } from "react-router-dom";
 
-import Register from "./JS/Register";
-import Login from "./JS/Login";
-import Navbar from "./JS/Navbar";
-import User from "./JS/User";
-import Home from "./JS/Home";
-import Dashboard from "./JS/Dashboard";
+import Register from "./components/Register";
+import Login from "./components/Login";
+import Navbar from "./components/Navbar";
+import User from "./components/User";
+import Home from "./components/Home";
+import Dashboard from "./components/Dashboard";
 
 class App extends Component {
   render() {
