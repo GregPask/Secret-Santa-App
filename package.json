@@ -18,7 +18,7 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --open --mode development",
+    "start": "webpack-dev-server --open --port 3000 --mode development",
     "build": "webpack --mode production"
   },
   "proxy": "http://localhost:8080",

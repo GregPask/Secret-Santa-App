@@ -41,29 +41,32 @@ class Register extends Component {
         };
     }
 
-    handleUsernameChanged = (e) => {
-        let name = e.target.value;
+    handleInputChanged = (e) => {
 
-        if (name.length > 0) {
+        let name = e.target.name;
+        let input = e.target.value;
 
-            fetch(config.AVAILABLE + "/" + name, {
-                method: "GET"
-            })
-            .then((res) => res.json())
-            .then((data) => {
-                if (!data.available) {
-                    this.setState({
-                        open: true,
-                        error: "username " + name + " is taken"
-                    })
-                }
-            });
+        if (name === "username") {
+
+            if (input.length > 0) {
+
+                fetch(config.AVAILABLE + "/" + input, {
+                    method: "GET"
+                })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (!data.available) {
+                        this.setState({
+                            open: true,
+                            error: "username " + input + " is taken"
+                        })
+                    }
+                });
+            }  
         }
        
-        this.setState({username: name});
+        this.setState({[name]: input});
     }
-
-    handleEmailChanged = (e) => this.setState({email: e.target.value});
 
     handlePasswordChanged = (e) => this.setState({password: e.target.value});
 
@@ -132,18 +135,22 @@ class Register extends Component {
                 <Typography variant="h5" component="h3" style={{ textAlign: "center"}}>Sign Up</Typography>
                 <form onSubmit={this.submitForm}>
                     <TextField
+                        name="username"
+                        value={this.state.username}
                         label="Username"
                         margin="dense"
                         fullWidth
-                        onChange={this.handleUsernameChanged}
+                        onChange={this.handleInputChanged}
                         errorText= {this.state.usernameError}
                         />
                         <TextField
+                        name="email"
+                        value={this.state.email}
                         label="Email"
                         margin="dense"
                         required
                         fullWidth
-                        onChange={this.handleEmailChanged}
+                        onChange={this.handleInputChanged}
                         />
                         <TextField
                         label="Password"
