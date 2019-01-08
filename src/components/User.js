@@ -4,27 +4,24 @@ import { Redirect } from "react-router-dom";
 
 import { logoutUser } from "../Actions/authActions";
 import { connect } from "react-redux";
-// import $ from "jquery";
 
 class User extends Component {
 
-    state = {
-        token: localStorage.getItem("token"),
-        userName: "",
-        usersAdded: [
+    constructor(props) {
+        super(props);
 
-        ],
-        usersLeft: 3,
-        name: "",
-        email: "",
-        errors: {
-
-        },
-        logout: false,
-        dashboard: false,
-        backendErrors: []
-
-
+        this.state = {
+            token: localStorage.getItem("token"),
+            userName: "",
+            usersAdded: [],
+            usersLeft: 3,
+            name: "",
+            email: "",
+            errors: {},
+            logout: false,
+            dashboard: false,
+            backendErrors: []
+        };
     }
 
     logout = () => {
@@ -35,7 +32,6 @@ class User extends Component {
         })
 
         this.props.logoutUser();
-
     }
 
     changeHandler = (e) => {
@@ -50,17 +46,14 @@ class User extends Component {
         let userCopy = this.state.usersAdded.slice();
         let filter = userCopy.filter((users) => users.name !== id);
 
-
         this.setState({
             usersAdded: filter,
             usersLeft: this.state.usersLeft + 1
         })
     }
 
-
     finalSubmit = (e) => {
         e.preventDefault();
-
 
         let data = this.state.usersAdded.slice();
 
@@ -96,13 +89,7 @@ class User extends Component {
                         dashboard: true
                     })
                 }
-
-
-
-
             }).catch((err) => console.log(err));
-
-
     }
 
     cancelBackend = () => {
@@ -119,7 +106,6 @@ class User extends Component {
         let nameError = [];
         let emailError = [];
 
-
         if (name === "") {
             nameError.push("Name field Required!");
             errorCopy["name"] = nameError;
@@ -132,7 +118,6 @@ class User extends Component {
                 errors: errorCopy
             })
         }
-
 
         if (email === "") {
             emailError.push("Email field Required!");
@@ -148,7 +133,6 @@ class User extends Component {
                 errors: errorCopy
             })
         }
-
 
         if (name !== "" && email !== "") {
 
@@ -170,18 +154,12 @@ class User extends Component {
             return;
         }
 
-
-
         this.setState({
             errors: {}
         })
-
-
     }
 
-
     componentDidMount() {
-
 
         fetch("http://localhost:8080/api/users/principal", {
             method: "GET",
@@ -190,8 +168,6 @@ class User extends Component {
                 "Authorization": "Bearer " + this.state.token
             }
         })
-
-
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
@@ -199,11 +175,8 @@ class User extends Component {
                     userName: data.username
                 })
             });
-
-
-
-
     }
+
     render() {
 
         if (this.state.dashboard) {
@@ -236,7 +209,6 @@ class User extends Component {
             welcomeMessage = "";
         }
 
-
         let addedUsers = this.state.usersAdded.map((user) => {
             return (
                 <tr>
@@ -252,70 +224,40 @@ class User extends Component {
                 <div className="container">
                     <h2>{welcomeMessage}</h2>
                     <hr />
-
                     <p>You must now add a list of people you want to </p>
                     <button onClick={this.logout} className="btn btn-dark">LOGOUT USER</button>
                     <br />  <br />
                     <div className="row">
                         <div className="col-lg-5">
-
-
                             <form style={{ maxWidth: "400px" }} id="addUsers">
-
-
                                 <div className="group-input">
                                     <label for="user">Name:</label><br />
-
-
-
                                     <input name="name" onChange={this.changeHandler} className={classnames("form-control", {
                                         "is-invalid": this.state.errors.name
                                     })} type="text" placeholder=". . ." />
-
-
                                     {this.state.errors.name && (
                                         <div className="invalid-feedback">{this.state.errors.name}</div>
                                     )}
-
-
                                 </div>
-
-
                                 <br />
-
-
                                 <div className="group-input">
                                     <label for="user">Email:</label><br />
-
-
                                     <input requried type="email" value={this.state.email} name="email" onChange={this.changeHandler}
                                         className={classnames("form-control", { "is-invalid": this.state.errors.email })}
                                         placeholder=". . ." />
-
-
                                     {this.state.errors.email && (
                                         <div className="invalid-feedback">{this.state.errors.email}</div>
                                     )}
-
-
-
                                 </div>
-
-
                                 <div>
                                     <br />
                                     <button disabled={this.state.usersLeft === 0 ? true : false} className="btn btn-dark" onClick={this.submitForm}>Add</button>
                                 </div>
                             </form>
-
-
-
-
                         </div>
                         <div id="middle" className="col-lg-2"></div>
                         <div className="col-lg-5">
                             <h4>Added Users</h4>
-
                             <table className="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -328,26 +270,21 @@ class User extends Component {
                                     {addedUsers}
                                 </tbody>
                             </table>
-
                             <hr />
                             <br />
                             <div>
                                 <button onClick={this.checkLength} disabled={this.state.usersLeft === 0 ? false : true} className="btn btn-success" data-toggle="modal" data-target="#modelId" id="finalSubmit">Final Submit</button>
                                 <br /><br /><br /><br />
                                 <p>{userMessage}</p>
-
                                 <div class="modal fade" id="modelId" tabindex="-1">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-
-
                                             </div>
                                             <div class="modal-body">
                                                 Are You Happy With your Final Selection?
                                             </div>
                                             <p style={{ fontSize: "22px", color: "red" }}>{this.state.backendErrors[0]}</p>
-
                                             <div class="modal-footer">
                                                 <button onClick={this.cancelBackend} type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
                                                 <button onClick={this.finalSubmit} type="submit" data-dismiss="modal" class="btn btn-primary">Save</button>
@@ -358,14 +295,11 @@ class User extends Component {
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         );
     }
 }
-
-
 
 const mapStateToProps = (state) => {
     return {
