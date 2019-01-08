@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { Route, Link, Switch, Redirect } from "react-router-dom";
-
-
+import { Link } from "react-router-dom";
 
 class Home extends Component {
-    state = {}
+
+    constructor(props) {
+        super(props);
+
+        this.state = {};
+    }
+
     render() {
         return (
             <div id="home">
@@ -38,7 +42,4 @@ class Home extends Component {
     }
 }
 
-
-
 export default Home;
-

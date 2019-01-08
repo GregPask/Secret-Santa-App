@@ -1,24 +1,29 @@
 import React, { Component } from 'react';
 
+import config from '../config';
+
 class Dashboard extends Component {
-    state = {
-        token: localStorage.getItem("token"),
-        userName: "",
-        participants: []
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            token: localStorage.getItem("token"),
+            userName: null,
+            participants: []
+        };
     }
+
 
     componentDidMount() {
 
-
-        fetch("http://localhost:8080/api/santa", {
+        fetch(config.SECRET_SANTA, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + this.state.token
             }
         })
-
-
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
@@ -27,18 +32,16 @@ class Dashboard extends Component {
                     participants: data.participants
                 })
             });
-
     }
-
 
     render() {
 
-        let users = this.state.participants.map((user) => {
+        let participants = this.state.participants.map((participant) => {
             return (
                 <tr>
-                    <td>{user.name}</td>
-                    <td>{user.email}</td>
-                    <td>False</td>
+                    <td>{participant.name}</td>
+                    <td>{participant.email}</td>
+                    <td>{participant.emailVerified ? "True": "False"}</td>
                 </tr>
             );
         })
@@ -46,24 +49,19 @@ class Dashboard extends Component {
         return (
             <div>
                 <h2>Dashboard</h2>
-
                 <br /><br /><br />
                 <table style={{ maxWidth: "500px" }} className="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Email Pending</th>
+                            <th>Email Verified</th>
                         </tr>
                     </thead>
                     <tbody>
-
-                        {users}
-
+                        {participants}
                     </tbody>
-
                 </table>
-
             </div>
         );
     }
