@@ -1,43 +1,7 @@
-#registerCard {
-    max-width: 400px;
-    margin: 2em auto;
-    padding: 1em;
-    box-shadow: 5px 5px 10px 2px rgba(51, 51, 51, 0.521);
-    font-size: 1.4rem;
-}
-
-#regTitle {
-    letter-spacing: 2px;
-    font-size: 3rem;
-    font-weight: 500;
-}
-#username, #password, #email {
-    font-size: 1.4rem;
-    outline: 0;
-    border: 0;
-    margin-bottom: -10px;
-}
-
-#username:focus {
-    outline: none !important;
-   
-}
-
-#registerSend {
-    background-color: black !important;
-    border-radius: 0;
-    padding: 10px 25px;
-    border: 1px solid black;
-    outline: 0;
-    transition: all 0.5s ease;
-    font-size: 1.2rem;
-    letter-spacing: 2px;
-    margin-top: 20px;
-}
-
-#registerSend:hover {
-    outline: 0;
-    // border: 1px solid #fff;
-    transform: scale(1.1);
-   
+.registration-form {
+    background: url('../images/tree.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }

@@ -25,25 +25,25 @@ class Navbar extends Component {
         this.state = {};
     }
 
-    logoutUser = () => {
-
-        this.props.logoutUser();
-    }
+    logoutUser = () => this.props.logoutUser();
 
     render() {
+
         const { classes } = this.props;
 
         return (
             <Fragment>
                 <AppBar position="static" color="default">
                     <Toolbar>
-                    <Typography variant="body1" className={classes.grow}>Secret Santa</Typography>
+                    <Typography variant="body1" className={classes.grow}>
+                        <Button component={Link} to="/">Secret Santa</Button>
+                    </Typography>
                     {
                         !this.props.authProp.authenticated ? 
                         (
                             <Fragment>
                                 <Button component={Link} to="/login">Login</Button>
-                                <Button component={Link} to="/register">Register</Button>
+                                <Button component={Link} to="/register">Sign Up</Button>
                             </Fragment>
                         ) :
                         (

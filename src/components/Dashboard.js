@@ -13,8 +13,7 @@ class Dashboard extends Component {
             participants: []
         };
     }
-
-
+    
     componentDidMount() {
 
         fetch(config.SECRET_SANTA, {

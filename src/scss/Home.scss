@@ -3,33 +3,6 @@ body {
     background-color: #f0ebeb;
 }
 
-#container {
-    max-width: 900px;
-    margin: auto;
-}
-
-#santa-img {
-    width: 100px;
-    height: 100px;
-}
-
-#title {
-    background-image: url("https://london-post.co.uk/wp-content/uploads/2018/11/xmas-presents.jpg");
-    background-position: center;
-    background-size: cover;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    position: relative;
-    justify-content: center;
-  
-    h1 {
-        font-size: 5rem;
-        color: #fff;
-        z-index: 55500;
-    }
-}
-
 #overlay {
      background-color: rgba(0, 0, 0, 0.664);
     position: absolute;
@@ -38,33 +11,21 @@ body {
     right: 0;
     left: 0;
     z-index: 0;
- 
-}
-
-#signUp {
-    background-color: black;
-    color: #fff;
-    border: 0;
-    outline: 0;
-    padding: 10px 35px;
-    z-index: 10 ;
-    font-size: 2rem;
-    margin-top: 10px;
-}
-
-#hello {
-    color: #fff;
 }
 
 #jumbo {
-    text-align: center;
-    background-color: rgb(175, 10, 10);
     color: #fff;
-    height: 500px;
+    height: 700px;
     display: flex;
     align-items: center;
     font-weight: 400;
     letter-spacing: 5px;
+    text-align: center;
+    background: url('../images/presents.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 
     #jumboBtn {
         background-color: black !important;
@@ -73,16 +34,10 @@ body {
         border-radius: 0;
         padding: 10px 40px;
         transition: all 1s ease;
+        border: 1px solid #fff !important;
     }
-
-}
-
-#jumboBtn {
-   
-    border: 1px solid #fff !important;
 }
 
 .content-title {
     font-size: 4rem;
-    font-weight: 400;
 }

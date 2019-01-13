@@ -26,6 +26,7 @@ const styles = theme => ({
   });
 
 class Register extends Component {
+    displayName = 'Register'
 
     constructor(props) {
         super(props);
@@ -62,7 +63,7 @@ class Register extends Component {
                         })
                     }
                 });
-            }  
+            } 
         }
        
         this.setState({[name]: input});
@@ -71,6 +72,7 @@ class Register extends Component {
     handlePasswordChanged = (e) => this.setState({password: e.target.value});
 
     handleClose = (event, reason) => {
+
         if (reason === 'clickaway') {
           return;
         }
@@ -117,6 +119,7 @@ class Register extends Component {
             }).catch((err) => {
                 this.setState({
                     open: true, 
+                    usernameError: 'dasfs',
                     error: err.message });
             });
     }
@@ -131,7 +134,9 @@ class Register extends Component {
         }
 
         const form = (
-            <Paper elevation={20} className={classes.root}>
+            <Paper 
+                elevation={20} 
+                className={classes.root}>
                 <Typography variant="h5" component="h3" style={{ textAlign: "center"}}>Sign Up</Typography>
                 <form onSubmit={this.submitForm}>
                     <TextField
@@ -140,8 +145,8 @@ class Register extends Component {
                         label="Username"
                         margin="dense"
                         fullWidth
+                        required
                         onChange={this.handleInputChanged}
-                        errorText= {this.state.usernameError}
                         />
                         <TextField
                         name="email"
@@ -207,6 +212,7 @@ class Register extends Component {
                         spacing={0}
                         alignItems="flex-start"
                         justify="center"
+                        className="registration-form"
                         style={{ minHeight: '100vh' }}
                         >
                         <Grid item lg={6} style={{ paddingTop: '30px'}}>
