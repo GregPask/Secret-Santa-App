@@ -4,7 +4,11 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { loginUser } from "../Actions/authActions";
 
+import config from "../config";
+
 class Login extends Component {
+    displayName = 'Login'
+
     state = {
         username: "",
         email: "",
@@ -27,35 +31,33 @@ class Login extends Component {
             password: this.state.password
         }
 
-        fetch("http://localhost:8080/api/users/login", {
+        fetch(config.LOGIN, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(loginData)
         })
+        .then((res) => res.json())
+        .then((data) => {
 
-            .then((res) => res.json())
-            .then((data) => {
+            if (data.token) {
+                localStorage.setItem("token", data.token);
+                this.props.loginUser();
 
-                if (data.token) {
-                    // console.log(data.token);
-                    localStorage.setItem("token", data.token);
-                    this.props.loginUser();
-
-                    this.setState({
-                        loggedIn: true
-                    })
+                this.setState({
+                    loggedIn: true
+                })
 
 
-                } else {
-                    this.setState({
-                        errors: "Unknown User"
-                    })
-                }
-            })
+            } else {
+                this.setState({
+                    errors: "Unknown User"
+                })
+            }
+        })
     }
-    
+
     render() {
 
         if (this.state.loggedIn) {

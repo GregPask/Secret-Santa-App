@@ -5,7 +5,11 @@ import { Redirect } from "react-router-dom";
 import { logoutUser } from "../Actions/authActions";
 import { connect } from "react-redux";
 
+import config from "../config";
+
 class User extends Component {
+    displayName = 'User'
+
     state = {
         token: localStorage.getItem("token"),
         userName: "",
@@ -60,7 +64,7 @@ class User extends Component {
 
         console.log(user);
 
-        fetch("http://localhost:8080/api/santa", {
+        fetch(config.SECRET_SANTA, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -69,22 +73,20 @@ class User extends Component {
             body: JSON.stringify(user)
         })
 
-            .then((res) => res.json())
-            .then((data) => {
-                // console.log(data);
-                if (data.errors) {
-                    this.setState({
-                        backendErrors: data.errors
-                    })
-                } else {
+        .then((res) => res.json())
+        .then((data) => {
+            if (data.errors) {
+                this.setState({
+                    backendErrors: data.errors
+                })
+            } else {
 
-                    // $("#modelId").modal("toggle");
-
-                    this.setState({
-                        dashboard: true
-                    })
-                }
-            }).catch((err) => console.log(err));
+                this.setState({
+                    dashboard: true
+                })
+            }
+        })
+        .catch((err) => console.log(err));
     }
 
     cancelBackend = () => {
@@ -156,20 +158,15 @@ class User extends Component {
 
     componentDidMount() {
 
-        fetch("http://localhost:8080/api/users/principal", {
+        fetch(config.USER_INFO, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + this.state.token
             }
         })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-                this.setState({
-                    userName: data.username
-                })
-            });
+        .then((res) => res.json())
+        .then((data) => this.setState({userName: data.username}));
     }
 
     render() {
@@ -177,9 +174,6 @@ class User extends Component {
         if (this.state.dashboard) {
             return <Redirect to="/dashboard" />
         }
-
-        console.log(this.props.authProp);
-        console.log(this.state.token);
 
         if (!this.state.token) {
             return <Redirect to="/" />;
@@ -194,7 +188,6 @@ class User extends Component {
         if (usersLeft > 0 && usersLeft <= 3) {
             userMessage = `${usersLeft} users left to add!`;
         }
-
 
         let welcomeMessage = "";
 

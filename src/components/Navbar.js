@@ -18,6 +18,8 @@ const styles = {
 };
 
 class Navbar extends Component {
+    displayName = 'Navbar'
+
     state = {};
 
     logoutUser = () => this.props.logoutUser();

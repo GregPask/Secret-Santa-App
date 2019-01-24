@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import config from '../config';
 
 class Dashboard extends Component {
+    displayName = 'Dashboard'
+
     state = {
         token: localStorage.getItem("token"),
         userName: null,
@@ -18,14 +20,13 @@ class Dashboard extends Component {
                 "Authorization": "Bearer " + this.state.token
             }
         })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-                this.setState({
-                    userName: data.username,
-                    participants: data.participants
-                })
-            });
+        .then((res) => res.json())
+        .then((data) => {
+            this.setState({
+                userName: data.username,
+                participants: data.participants
+            })
+        });
     }
 
     render() {

@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { Link } from "react-router-dom";
 
 class Home extends Component {
+    displayName = 'Home'
+
     state = {};
 
     render() {
