@@ -32,12 +32,12 @@ class Register extends Component {
         super(props);
 
         this.state = {
-            username: null,
-            usernameError: null,
-            email: null,
-            password: null,
+            username: '',
+            usernameError: '',
+            email: '',
+            password: '',
             registered: false,
-            error: null,
+            error: '',
             open: false
         };
     }
@@ -170,7 +170,6 @@ class Register extends Component {
                         type="submit"
                         variant="contained" 
                         style={{ margin: '16px' }}
-                        sizeLarge
                         color="primary">
                             Submit
                         </Button>

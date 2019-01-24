@@ -64,7 +64,7 @@ class Login extends Component {
 
     }
     render() {
-        console.log(this.props);
+
         if (this.state.loggedIn) {
             return <Redirect to="/dashboard" />
         }
