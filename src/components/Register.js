@@ -27,20 +27,16 @@ const styles = theme => ({
 
 class Register extends Component {
     displayName = 'Register'
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            username: '',
-            usernameError: '',
-            email: '',
-            password: '',
-            registered: false,
-            error: '',
-            open: false
-        };
-    }
+    
+    state = {
+        username: '',
+        usernameError: '',
+        email: '',
+        password: '',
+        registered: false,
+        error: '',
+        open: false
+    };
 
     handleInputChanged = (e) => {
 

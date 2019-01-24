@@ -5,18 +5,13 @@ import { connect } from "react-redux";
 import { loginUser } from "../Actions/authActions";
 
 class Login extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            username: "",
-            email: "",
-            password: "",
-            loggedIn: false,
-            errors: ""
-        };
-    }
+    state = {
+        username: "",
+        email: "",
+        password: "",
+        loggedIn: false,
+        errors: ""
+    };
 
     changeHandler = (e) => {
         this.setState({
@@ -31,7 +26,6 @@ class Login extends Component {
             username: this.state.username,
             password: this.state.password
         }
-
 
         fetch("http://localhost:8080/api/users/login", {
             method: "POST",
@@ -60,9 +54,8 @@ class Login extends Component {
                     })
                 }
             })
-
-
     }
+    
     render() {
 
         if (this.state.loggedIn) {

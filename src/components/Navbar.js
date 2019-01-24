@@ -18,12 +18,7 @@ const styles = {
 };
 
 class Navbar extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {};
-    }
+    state = {};
 
     logoutUser = () => this.props.logoutUser();
 
